@@ -12,7 +12,9 @@ app.set("view engine", "hbs");
 app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
 app.get("", (req, res) => {
-  res.render("index");
+  res.render("index",{
+    title:"Get Weather",
+  });
 });
 app.get("/api/weather/*", (req, res) => {
   const cityName = req.query.cityName;
@@ -26,7 +28,9 @@ app.get("/api/weather/*", (req, res) => {
   });
 });
 app.get("/home",(req,res)=>{
-  res.render("index");
+  res.render("index",{
+    title:"Get Weather",
+  });
 })
 app.get("/about",(req,res)=>{
   res.render("about",{
