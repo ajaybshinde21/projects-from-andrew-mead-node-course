@@ -28,6 +28,13 @@ app.get("/api/weather/*", (req, res) => {
 app.get("/home",(req,res)=>{
   res.render("index");
 })
+app.get("/about",(req,res)=>{
+  res.render("about",{
+    title:"About this site",
+    heading:"About",
+    body:"This is a test app to get current weather. Made with Node.js, Express"
+  });
+})
 
 
 const PORT = process.env.PORT || 3000;
