@@ -7,6 +7,7 @@ function getWeather(e) {
   e.preventDefault();
   const cityName = cityInputNode.value;
   cityInputNode.value = "";
+  resultNode.innerHTML="";
   fetch(`/api/weather/?cityName=${cityName}`)
     .then((res) => {
       if (res.status == 200) {
@@ -22,11 +23,10 @@ function getWeather(e) {
         <p class="result-text" >City Name:${data.location.name}</p>
       <p class="result-text"> Country:${data.location.country}</p>
       <div class="temprature">
-            <p class="result-text">temprature :${data.current.temperature} <sup>o</sup>c</p><img src="${data.current.weather_icons[0]}" >
-           
+            <p class="result-text">temprature :${data.current.temperature} <sup>o</sup>c</p>
       </div>
       <p class="result-text">weather descriptions :${data.current.weather_descriptions[0]}</p>
-      <p class="result-text">it is ${data.current.temperature} <sup>o</sup>c but feels ${data.current.feelslike} <sup>o</sup>c</p>`;
+      <p class="result-text">it is ${data.current.temperature} <sup>o</sup>c but feels like ${data.current.feelslike} <sup>o</sup>c</p>`;
       }
     })
     .catch((err) => {

@@ -4,11 +4,12 @@
   box-sizing: border-box;
 }
 :root {
-  --base-color: #769fcd;
-  --submit-hover-color: #597a9e;
-  --text-primary: #f7fbfc;
-  --secondary-color: #d6e6f2;
-  --text-danger:#FF5959;
+  --base-color: #222831;
+  --submit-hover-color: #393E46;
+  --text-primary: #EEEEEE;
+  --secondary-color: #00ADB5;
+  --text-danger:#FC5185;
+  --text-color:#F5F5F5;
 }
 body {
   background-color: var(--text-color);
@@ -38,9 +39,10 @@ body {
   padding: 0.5rem 1rem;
   text-decoration: none;
   color: var(--text-primary);
+  font-weight: 600;
 }
 .nav-link:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--text-color);
   color: var(--base-color);
 }
 
@@ -77,15 +79,17 @@ input[type="text"] {
   border: 1px solid #c5c3c3;
   border-radius: 3px;
   font-size: 1rem;
+  background-color: var(--text-color);
 }
 input[type="text"]:focus-visible {
-  outline: var(--base-color) auto 1px;
+  outline: var(--submit-hover-color) auto 1px;
 }
 #result {
   margin-top: 1rem;
   max-width: 80%;
   margin: 0 auto;
   text-align: center;
+  color:var(--submit-hover-color)
 }
 #result > * {
   margin-bottom: 1rem;
@@ -124,7 +128,7 @@ h2 {
   align-items: center;
   height: 50%;
 }
-.error-img {
+.error-img, .text-danger {
   color:var(--text-danger);
 }
 .fa-exclamation-triangle{
@@ -132,4 +136,16 @@ h2 {
 }
 .error-container > *{
   margin-bottom: 1rem;
+}
+#about-text{
+  max-width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 4rem;
+}
+#about-text p {
+  margin-top: 1rem;
+}
+.fa-heart{
+  margin-left: 0.3rem;
 }
