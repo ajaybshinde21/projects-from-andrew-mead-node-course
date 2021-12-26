@@ -39,6 +39,9 @@ app.get("/about",(req,res)=>{
     body:"This is a test app to get current weather. Made with Node.js, Express"
   });
 })
+app.get("/code",(req,res)=>{
+  res.redirect("https://github.com/ajaybshinde21/projects-from-andrew-mead-node-course/tree/main/weather-app");
+})
 
 
 const PORT = process.env.PORT || 3000;
