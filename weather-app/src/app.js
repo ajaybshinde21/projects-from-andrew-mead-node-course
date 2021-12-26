@@ -25,6 +25,10 @@ app.get("/api/weather/*", (req, res) => {
     }
   });
 });
+app.get("/home",(req,res)=>{
+  res.render("index");
+})
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,() => {
