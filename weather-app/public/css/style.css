@@ -8,6 +8,7 @@
   --submit-hover-color: #597a9e;
   --text-primary: #f7fbfc;
   --secondary-color: #d6e6f2;
+  --text-danger:#FF5959;
 }
 body {
   background-color: var(--text-color);
@@ -112,4 +113,23 @@ input[type="text"]:focus-visible {
 h2 {
   margin-top: 3rem;
   font-size: 1.4rem;
+}
+.error-container{
+  max-width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+}
+.error-img {
+  color:var(--text-danger);
+}
+.fa-exclamation-triangle{
+  font-size: 6rem;
+}
+.error-container > *{
+  margin-bottom: 1rem;
 }
