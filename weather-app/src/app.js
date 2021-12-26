@@ -43,6 +43,10 @@ app.get("/code",(req,res)=>{
   res.redirect("https://github.com/ajaybshinde21/projects-from-andrew-mead-node-course/tree/main/weather-app");
 })
 
+app.get("*",(req,res)=>{
+  res.render("404",{title:"404=Page Not Found",
+  body:"We're Sorry the requested page couldn't be found."});
+})
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,() => {
