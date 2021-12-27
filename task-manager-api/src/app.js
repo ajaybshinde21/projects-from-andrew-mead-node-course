@@ -60,9 +60,11 @@ app.get("/users/:id", async (req, res) => {
 app.patch("/users/:id", async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = ["name", "email", "password", "age"];
-  const isValidOperation = updates.every((update)=>allowedUpdates.includes(update));
-  if(!isValidOperation){
-    return res.status(400).send({error:"invalid updates"});
+  const isValidOperation = updates.every((update) =>
+    allowedUpdates.includes(update)
+  );
+  if (!isValidOperation) {
+    return res.status(400).send({ error: "invalid updates" });
   }
   try {
     const _id = req.params.id;
@@ -75,6 +77,29 @@ app.patch("/users/:id", async (req, res) => {
     res.status(400).send(err);
   }
 });
+
+app.patch("/tasks/:id", async (req, res) => {
+  const updates = Object.keys(req.body);
+  const allowedUpdates = ["title", "description", "completed"];
+  const isValidOperation = updates.every((update) =>
+    allowedUpdates.includes(update)
+  );
+  if (!isValidOperation) {
+    return res.status(400).send({ error: "invalid updates" });
+  }
+
+  try {
+    const _id = req.params.id;
+    const task = await Task.findByIdAndUpdate(_id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    res.send(task);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT}`);
