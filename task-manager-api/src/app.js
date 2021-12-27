@@ -56,6 +56,19 @@ app.get("/users/:id", async (req, res) => {
     res.status(500).send(err);
   }
 });
+
+app.patch("/users/:id", async (req, res) => {
+  try {
+    const _id = req.params.id;
+    const user = await User.findByIdAndUpdate(_id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    res.send(user);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT}`);
