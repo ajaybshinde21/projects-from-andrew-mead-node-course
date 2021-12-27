@@ -58,6 +58,12 @@ app.get("/users/:id", async (req, res) => {
 });
 
 app.patch("/users/:id", async (req, res) => {
+  const updates = Object.keys(req.body);
+  const allowedUpdates = ["name", "email", "password", "age"];
+  const isValidOperation = updates.every((update)=>allowedUpdates.includes(update));
+  if(!isValidOperation){
+    return res.status(400).send({error:"invalid updates"});
+  }
   try {
     const _id = req.params.id;
     const user = await User.findByIdAndUpdate(_id, req.body, {
@@ -66,7 +72,7 @@ app.patch("/users/:id", async (req, res) => {
     });
     res.send(user);
   } catch (err) {
-    res.status(500).send(err);
+    res.status(400).send(err);
   }
 });
 const PORT = process.env.PORT || 3000;
